@@ -47,12 +47,14 @@ public class FXMLController {
 
     @FXML
     void doCreaGrafo(ActionEvent event) {
-    	
+    	Match match = cmbMatch.getValue();
+    	model.creaGrafo(match);
+    	txtResult.setText(model.infoGrafo());
     }
 
     @FXML
     void doGiocatoreMigliore(ActionEvent event) {    	
-    	
+    	txtResult.appendText("Top Player: "+model.getTopPlayer());
     }
     
     @FXML
@@ -73,5 +75,6 @@ public class FXMLController {
     
     public void setModel(Model model) {
     	this.model = model;
+    	cmbMatch.getItems().addAll(model.listAllMatches());
     }
 }
